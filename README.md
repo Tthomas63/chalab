@@ -30,6 +30,7 @@ start the system (database, server, etc) automatically.
 Then you can run the tests on your local machine (non-dockerized) to get assistance from your IDE.
 As of now it's not possible to run the tests inside Docker (Pull-Requests are welcome!).
 
+
 ### Start the server:
 
 In the chalab folder,
@@ -39,6 +40,11 @@ In the chalab folder,
 It downloads all the containers & dependencies then start the containers.
 Access the app at [http://localhost:8000/](http://localhost:8000/).
 Kill it (ctrl-c) then re-run `make dev` to rebuild the container and apply db migrations.
+
+### Management
+
+- `make superuser`: when you started the database (`make dev` does it for you)
+- `make static`: to re-generate the static resources
 
 
 ### Testing: setup
