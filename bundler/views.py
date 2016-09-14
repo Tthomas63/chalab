@@ -5,6 +5,7 @@ from django.http import Http404
 from django.http import StreamingHttpResponse
 from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse
+from django_ajax.decorators import ajax
 
 from chalab import errors
 from wizard.models import ChallengeModel
@@ -16,8 +17,7 @@ def err(request, template, status, **kwargs):
     return render(request, template, status=status, context=kwargs)
 
 
-@login_required
-def build(request, pk):
+def create_bundle(request, pk):
     c = get_object_or_404(ChallengeModel, created_by=request.user, pk=pk)
 
     if not c.is_ready:
@@ -35,7 +35,20 @@ def build(request, pk):
                                       """The bundle is already being built.""",
                                       challenge=c)
 
+    return c, b
+
+
+@login_required
+def build(request, pk):
+    c, b = create_bundle(request, pk)
     return redirect(c.get_absolute_url())
+
+
+@ajax
+@login_required
+def ajax_build(request, pk):
+    c, b = create_bundle(request, pk)
+    return {'task': 'created'}
 
 
 @login_required
