@@ -20,17 +20,11 @@
                 {{ object.title }}
             </h1>
 
-            {% if challenge.origin_group %}
             <h3 class="text-muted">
-                <small>From group :
-                    {{ challenge.origin_group.name }}
+                <small>
+                    Organized by {{ object.organization_name }}
                 </small>
             </h3>
-            {% endif %}
-
-            <p class="text-muted">
-                Organized by {{ object.organization_name }}
-            </p>
 
             <p class="content">{{ object.description }}</p>
         </div>

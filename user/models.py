@@ -16,14 +16,11 @@ class ProfileModel(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
-    first_name = models.CharField(max_length=80, null=True, blank=True)
-    last_name = models.CharField(max_length=80, null=True, blank=True)
+    first_name = models.CharField(max_length=80, null=True)
+    last_name = models.CharField(max_length=80, null=True)
 
     affiliation = models.CharField(max_length=80, null=True, blank=True)
-    expertise = models.CharField(max_length=2, choices=EXPERTISE_CHOICES, default=EX_NOVICE)
+    expertise = models.CharField(max_length=2, choices=EXPERTISE_CHOICES, null=True)
 
-    actual_group = models.ForeignKey('group.GroupModel', null=True, blank=True, on_delete=models.SET_NULL)
-
-    @staticmethod
-    def get_absolute_url():
+    def get_absolute_url(self):
         return reverse('user:profile')

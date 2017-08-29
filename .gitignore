@@ -3,7 +3,6 @@ static/*
 !static/chalab
 static/chalab/*
 !static/chalab/CodeMirror
-!static/chalab/Bootstrap-multiselect
 media/*
 backups/*
 

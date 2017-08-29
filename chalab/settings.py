@@ -52,8 +52,7 @@ INSTALLED_APPS = [
     'landing',
     'user',
     'wizard',
-    'bundler',
-    'group'
+    'bundler'
 ]
 
 MIDDLEWARE_CLASSES = [
